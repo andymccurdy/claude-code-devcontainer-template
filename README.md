@@ -8,4 +8,4 @@ Devcontainers provide reproducible development environments and isolate project 
 
 Anthropic provides a standard [devcontainer feature](https://containers.dev/implementors/features/) to install Claude Code. Claude Code stores its configuration and authentication token within the devcontainer. When the devcontainer is rebuilt (which I find happens frequently during early development), Claude Code's config is lost and requires reauthenticating.
 
-This template creates a named volume to persist Claude Code's data between container rebuilds.
+This template uses Anthropic's devcontainer feature and additionally creates a named volume to persist Claude Code's data between container rebuilds.
