@@ -1,0 +1,26 @@
+{
+  "name": "Claude Code Dev Environment",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/project",
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
+  },
+  // ensure a safe default value is present in ~/.claude.json
+  "postCreateCommand": "test -f /home/vscode/.claude/.claude.json || echo '{}' > /home/vscode/.claude/.claude.json",
+  "mounts": [
+    "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
+    "source=claude-code-config-dir-${devcontainerId},target=/home/vscode/.claude,type=volume"
+  ]
+}
